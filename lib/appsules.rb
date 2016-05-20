@@ -1,4 +1,7 @@
 require 'rails'
+require 'appsules/definition_parser'
+require 'appsules/ruby_file'
+require 'appsules/helper_loader'
 require 'appsules/railtie'
 
 module Appsules
@@ -21,6 +24,14 @@ module Appsules
     @@path = Rails.root.join('appsules')
     FileUtils::mkdir_p @@path
     @@path
+  end
+
+  # for internal use by the appsules gem
+  def self.add_helpers(appsule_path, initializer_context)
+    loader = HelperLoader.new(initializer_context)
+    Dir[File.join(appsule_path, '**', '*_helper.rb')].each do |helper_path|
+      loader.load_helpers_defined_in(helper_path)
+    end
   end
 
 end

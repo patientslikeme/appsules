@@ -11,6 +11,7 @@ module Appsules
     initializer "appsules.autoload_views" do |app|
       ActiveSupport.on_load :action_controller do
         Dir[File.join(Appsules.path, '*')].each do |appsule_path|
+          Appsules.add_helpers(appsule_path, self)
           append_view_path File.join(appsule_path, 'views')
         end
       end
