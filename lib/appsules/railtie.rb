@@ -17,5 +17,8 @@ module Appsules
         end
       end
     end
+    initializer "appsules.tests_load_path" do |app|
+      $LOAD_PATH << Appsules.test_path.to_s if Rails.env.test?
+    end
   end
 end
