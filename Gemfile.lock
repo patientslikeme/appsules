@@ -1,17 +1,17 @@
 PATH
-  remote: .
-  specs:
-    appsules (0.0.0.localgem)
-      factory_girl_rails
-      rails
-
-PATH
   remote: ../../internal
   specs:
 
 PATH
   remote: ../../world
   specs:
+
+PATH
+  remote: .
+  specs:
+    appsules (0.0.0.localgem)
+      factory_girl_rails
+      rails
 
 GEM
   remote: https://rubygems.org/
@@ -71,10 +71,10 @@ GEM
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
-    mini_portile2 (2.0.0)
+    mini_portile2 (2.1.0)
     minitest (5.8.4)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.8.1)
+      mini_portile2 (~> 2.1.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -125,4 +125,4 @@ DEPENDENCIES
   rake (~> 10.0)
 
 BUNDLED WITH
-   1.10.5
+   1.12.5
