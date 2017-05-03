@@ -3,8 +3,6 @@ require_relative '../lib/appsules/definition_parser'
 require 'ripper'
 require "active_support/core_ext"
 
-require 'pry'
-
 class DefinitionParserTest < ActiveSupport::TestCase
 
   test "returns an empty array when s-expression is empty" do
