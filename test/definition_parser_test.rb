@@ -3,6 +3,8 @@ require_relative '../lib/appsules/definition_parser'
 require 'ripper'
 require "active_support/core_ext"
 
+require 'pry'
+
 class DefinitionParserTest < ActiveSupport::TestCase
 
   test "returns an empty array when s-expression is empty" do
@@ -200,11 +202,13 @@ class DefinitionParserTest < ActiveSupport::TestCase
        [:const_ref, [:@const, "UnitedStates", [10, 6]]],
        nil,
        [:bodystmt,
-        [[:class,
+        [[:void_stmt],
+         [:class,
           [:const_ref, [:@const, "Virginia", [11, 8]]],
           nil,
           [:bodystmt,
-           [[:class,
+           [[:void_stmt],
+            [:class,
              [:const_ref, [:@const, "Richmond", [12, 10]]],
              nil,
              [:bodystmt, [[:void_stmt]], nil, nil, nil]]],
@@ -222,7 +226,8 @@ class DefinitionParserTest < ActiveSupport::TestCase
         [:@const, "ElizabethCity", [17, 35]]],
        nil,
        [:bodystmt,
-        [[:assign,
+        [[:void_stmt],
+         [:assign,
           [:var_field, [:@const, "SOME_CONSTANT", [18, 2]]],
           [:@int, "77", [18, 18]]],
          [:def,
@@ -249,7 +254,8 @@ class DefinitionParserTest < ActiveSupport::TestCase
        [:const_ref, [:@const, "NorthAmerica", [30, 6]]],
        nil,
        [:bodystmt,
-        [[:module,
+        [[:void_stmt],
+         [:module,
           [:const_ref, [:@const, "Bahamas", [31, 9]]],
           [:bodystmt,
            [[:void_stmt],
