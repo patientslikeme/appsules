@@ -1,11 +1,9 @@
 require 'rails'
-require 'appsules/definition_parser'
-require 'appsules/ruby_file'
-require 'appsules/helper_loader'
+require 'active_support'
+require 'active_support/core_ext'
 require 'appsules/railtie'
 
 module Appsules
-
   def self.add_factory_girl_paths!
     Dir[File.join(Appsules.test_path, '*')].each do |appsule_path|
       FactoryGirl.definition_file_paths << File.join(appsule_path, 'factories')
@@ -28,10 +26,11 @@ module Appsules
 
   # for internal use by the appsules gem
   def self.add_helpers(appsule_path, initializer_context)
-    loader = HelperLoader.new(initializer_context)
-    Dir[File.join(appsule_path, '**', '*_helper.rb')].each do |helper_path|
-      loader.load_helpers_defined_in(helper_path)
+    helpers_dir = File.join(appsule_path, "helpers")
+
+    Dir[File.join(helpers_dir, '**', '*_helper.rb')].map do |helper_path|
+      module_name = helper_path.sub(%r{^#{helpers_dir}/(.+)\.rb}i, '\1').classify
+      initializer_context.instance_eval "helper #{module_name}"
     end
   end
-
 end
