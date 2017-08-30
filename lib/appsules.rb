@@ -26,6 +26,8 @@ module Appsules
 
   # for internal use by the appsules gem
   def self.add_helpers(appsule_path, initializer_context)
+    return unless initializer_context.respond_to?(:helper)
+
     helpers_dir = File.join(appsule_path, "helpers")
 
     Dir[File.join(helpers_dir, '**', '*_helper.rb')].map do |helper_path|
