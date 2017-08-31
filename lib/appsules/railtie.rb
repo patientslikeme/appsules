@@ -9,10 +9,9 @@ module Appsules
 
     # Add each appsule's immediate subdirectories as eager_load paths
     initializer 'appsules.autoload', :before => :set_autoload_paths do |app|
-      Dir[File.join(Appsules.path, '*/*/')].each do |appsule_path|
-        relative_path = Pathname.new(appsule_path).relative_path_from(Rails.root).to_s
-        app.config.paths.add relative_path, eager_load: true
-      end
+      appsule_paths = Dir.glob(File.join(Appsules.path, '*/*/'))
+      app.config.autoload_paths += appsule_paths
+      app.config.eager_load_paths += appsule_paths
     end
 
     initializer "appsules.autoload_views" do |app|
