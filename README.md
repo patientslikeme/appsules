@@ -87,9 +87,9 @@ Add this to your Gemfile:
 
 Then, in your `test_helper.rb` file, make sure your appsule factories get loaded:
 
-    FactoryGirl.definition_file_paths = ['./factories']  # wherever you keep your factories
-    Appsules.add_factory_girl_paths!                     # add factories defined in appsules
-    FactoryGirl.find_definitions
+    FactoryBot.definition_file_paths = ['./factories']  # wherever you keep your factories
+    Appsules.add_factory_bot_paths!                     # add factories defined in appsules
+    FactoryBot.find_definitions
 
 All of the files you put into your appsule will be automagically loaded by Rails.  Also,
 you'll get this cool rake task for free:
@@ -98,7 +98,15 @@ you'll get this cool rake task for free:
 
 ## What else?
 
-This doesn't work with RSpec yet; it assumes minitest.  It also assumes you are using FactoryGirl.
+This doesn't work with RSpec yet; it assumes minitest.  It also assumes you are using FactoryBot.
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new pull request
 
 ## Anything else?
 

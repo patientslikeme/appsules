@@ -1,9 +1,7 @@
-require_relative 'appsules_test_helper'
+require_relative "test_helper"
 
 class AppsulesTest < ActiveSupport::TestCase
-
-  test "tests are setup correctly" do  # gems should always have at least one runnable test
+  test "tests are setup correctly" do
     assert true
   end
-
 end

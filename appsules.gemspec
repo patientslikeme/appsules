@@ -1,8 +1,23 @@
-# coding: utf-8
-require File.expand_path('../../../local_gem_config', __FILE__)
-gem_name = File.basename(__FILE__).split(".").first
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "appsules/version"
 
-LocalGem::Specification.new(gem_name) do |spec|
-  spec.add_runtime_dependency "rails", ">= 4.2", "< 6.0"
-  spec.add_runtime_dependency "factory_girl_rails"
-end.spec
+Gem::Specification.new do |spec|
+  spec.name          = "appsules"
+  spec.version       = Appsules::VERSION
+  spec.license       = "MIT"
+  spec.authors       = ["Wyatt Greene", "Michael Deutsch"]
+  spec.email         = ["mdeutsch@patientslikeme.com"]
+  spec.homepage      = "https://github.com/patientslikeme/appsules"
+
+  spec.summary       = "Appsules are a different way to organize your Rails app files"
+  spec.description   = spec.summary
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
+  spec.require_paths = ["lib"]
+
+  spec.add_runtime_dependency "rails", "~> 5.0"
+
+  spec.add_development_dependency "rake"
+end
