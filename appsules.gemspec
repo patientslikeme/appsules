@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   end
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "rails", "~> 5.0"
+  spec.add_runtime_dependency "rails", ">= 5.0", "< 7.0"
 
   spec.add_development_dependency "rake"
 end
